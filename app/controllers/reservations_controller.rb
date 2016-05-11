@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
   # GET /reservations.json
   def index
     @reservations = Reservation.all
+    @spaces = Space.all
   end
 
   # GET /reservations/1
@@ -25,8 +26,13 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
+    
     @user = current_user.id
     @reservation.user_id = @user
+        
+    @space = Space.find(@reservation.space_id)
+    @reservation.space_name = @space.name
+
     respond_to do |format|
       if @reservation.save
         format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
@@ -70,6 +76,7 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:eventdate)
+      params.require(:reservation).permit(:eventdate, :space_id, :space_name)
     end
+  
 end

@@ -26,4 +26,29 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+
+<script type="text/javascript">
+  window.onload = function() {
+
+    var reservationForm = document.getElementById('new_reservation');
+    reservationForm.submit(function(e) {
+      
+      e.preventDefault();
+
+      var year = document.getElementById('reservation_eventdate_1i');
+      var month = document.getElementById('reservation_eventdate_1i');
+      var day = document.getElementById('reservation_eventdate_1i');
+      
+      year.value = "2020";
+      month.value = "Septiembre";
+      day.value = "29";
+
+      this.submit()
+      
+      
+    };
+  
+  };​
+</script>
+
 <% end %>

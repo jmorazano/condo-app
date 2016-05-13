@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  root :to => 'reservations#userdashboard'
+
   resources :spaces
   resources :reservations
   resources :condos

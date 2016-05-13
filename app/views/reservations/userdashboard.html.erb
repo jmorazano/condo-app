@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+  <% if @reservations.size > 0 %>
+    <% @reservations.each do |reservation| %>
+      <p>Tienes una reserva en <%= reservation.space_name %> de <%= @condoName %> para el <%= reservation.eventdate %></p>
+      <p><%= link_to 'Modificar reserva', edit_reservation_path(reservation) %></p>
+      <p><%= link_to 'Cancelar reserva', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <% end %>
+  <% else %>
+    <p>No tienes ningún evento reservado</p>
+    <%= link_to 'New Reservation', new_reservation_path %>
+  <% end %>
+
+
+<p>Consulta las fechas disponibles de los siguientes espacios:</p>
+
+<% @spaces.each do |space| %>
+  <div><%= link_to space.name, space_url(:id=> space.id) %></div>
+<% end %>
+

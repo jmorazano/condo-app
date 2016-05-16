@@ -10,8 +10,11 @@ class ReservationsController < ApplicationController
 
   def userdashboard
     @reservations = current_user.reservations
-    @spaces = current_user.condo.spaces
-    @condoName = current_user.condo.name
+    @spaces = current_user.condo.present?
+    if (@spaces)
+      @spaces = current_user.condo.spaces
+      @condoName = current_user.condo.name
+    end
   end
 
   # GET /reservations/1

@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<% if (@spaces) %>
   <% if @reservations.size > 0 %>
     <% @reservations.each do |reservation| %>
       <p>Tienes una reserva en <%= reservation.space_name %> de <%= @condoName %> para el <%= reservation.eventdate %></p>
@@ -8,13 +8,17 @@
     <% end %>
   <% else %>
     <p>No tienes ningún evento reservado</p>
-    <%= link_to 'New Reservation', new_reservation_path %>
+    <%= link_to 'RESERVAR', new_reservation_path %>
   <% end %>
 
 
-<p>Consulta las fechas disponibles de los siguientes espacios:</p>
+  <p>Consulta las fechas disponibles de los siguientes espacios:</p>
+  
+  <% @spaces.each do |space| %>
+    <div><%= link_to space.name, space_url(:id=> space.id) %></div>
+  <% end %>
+<% else %>
 
-<% @spaces.each do |space| %>
-  <div><%= link_to space.name, space_url(:id=> space.id) %></div>
+  <p>Su domicilio no fue verificado aún</p>
+
 <% end %>
-

@@ -5,5 +5,9 @@
   <%= @space.name %>
 </p>
 
+<% @space.reservations.each do |reservation| %>
+	<p><%= reservation.eventdate %></p>
+<% end %>
+
 <%= link_to 'Edit', edit_space_path(@space) %> |
 <%= link_to 'Back', spaces_path %>

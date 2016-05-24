@@ -6,17 +6,21 @@
       <p><%= link_to 'Modificar reserva', edit_reservation_path(reservation) %></p>
       <p><%= link_to 'Cancelar reserva', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></p>
     <% end %>
+    
+    <p>Consulta las fechas disponibles de los siguientes espacios:</p>
+    
+    <% @spaces.each do |space| %>
+      <div><%= link_to space.name, space_path(space.id) %></div>
+    <% end %>
+
   <% else %>
     <p>No tienes ningún evento reservado</p>
-    <%= link_to 'RESERVAR', new_reservation_path %>
+    <p>Selecciona un espacio para hacer una reserva</p>
+    <% @spaces.each do |space| %>
+      <div><%= link_to space.name, new_reservation_path(:space_id => space.id) %></div>
+    <% end %>
   <% end %>
 
-
-  <p>Consulta las fechas disponibles de los siguientes espacios:</p>
-  
-  <% @spaces.each do |space| %>
-    <div><%= link_to space.name, space_url(:id=> space.id) %></div>
-  <% end %>
 <% else %>
 
   <p>Su domicilio no fue verificado aún</p>

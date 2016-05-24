@@ -17,12 +17,14 @@
   </div>
 
   <div class="field">
-    <%= @user = current_user.condo.spaces
-        f.select :space_id, 
-        options_from_collection_for_select(@user, :id, :name), :prompt => "Seleccionar espacio"
-    %>
+    <%= f.hidden_field :space_id, :value => @space_id %>
   </div>
-  <h1 id="changeDate" style="cursor:pointer">Click on this date!</h1>
+
+  <% if params[:action] == "edit" %>
+  <%= f.collection_select(:space_id, current_user.spaces, :id, :name) %>
+  <% end %>
+
+  <h1 id="changeDate" style="cursor:pointer"><%= @space_id %> </h1>
   <div class="actions">
     <%= f.submit %>
   </div>

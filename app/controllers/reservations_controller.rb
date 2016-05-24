@@ -25,6 +25,7 @@ class ReservationsController < ApplicationController
   # GET /reservations/new
   def new
     @reservation = Reservation.new
+    @space_id = params[:space_id]
   end
 
   # GET /reservations/1/edit
@@ -56,6 +57,10 @@ class ReservationsController < ApplicationController
   # PATCH/PUT /reservations/1
   # PATCH/PUT /reservations/1.json
   def update
+    
+    @space = Space.find(@reservation.space_id)
+    @reservation.space_name = @space.name
+
     respond_to do |format|
       if @reservation.update(reservation_params)
         format.html { redirect_to root_path, notice: 'Reservation was successfully updated.' }

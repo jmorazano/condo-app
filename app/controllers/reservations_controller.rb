@@ -36,7 +36,7 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
-    
+    @year = Time.now.year
     @user = current_user.id
     @reservation.user_id = @user
         

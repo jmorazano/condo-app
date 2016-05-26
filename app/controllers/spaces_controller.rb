@@ -6,7 +6,7 @@ class SpacesController < ApplicationController
   def index
     @spaces = Space.all
   end
-
+  
   # GET /spaces/1
   # GET /spaces/1.json
   def show

@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :eventdate %><br>
-    <%= f.date_select :eventdate %>
+    <%= f.date_select :eventdate, :start_year=>Time.now.year, :end_year=>Time.now.year, :order=>[:day, :month, :year] %>
   </div>
 
   <div class="field">

@@ -4,6 +4,16 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %></div>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
@@ -21,6 +31,20 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.collection_select(:input_condo_id, @condos, :id, :name) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :floor %><br />
+    <%= f.number_field :floor %>
+  </div>
+
+  <div class="field">
+    <%= f.label :apartment %><br />
+    <%= f.text_field :apartment %>
+  </div>  
+  
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

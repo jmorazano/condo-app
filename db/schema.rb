@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160525222858) do
+ActiveRecord::Schema.define(version: 20160530215220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20160525222858) do
     t.integer  "user_id"
     t.integer  "space_id"
     t.string   "space_name"
+    t.string   "timeOfDay"
   end
 
   create_table "spaces", force: :cascade do |t|
@@ -56,16 +57,14 @@ ActiveRecord::Schema.define(version: 20160525222858) do
     t.string   "name"
     t.string   "last_name"
     t.date     "birth_date"
-    t.string   "street"
-    t.integer  "street_number"
-    t.string   "city"
-    t.string   "state"
-    t.string   "country"
     t.integer  "condo_id"
     t.string   "role"
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.integer  "input_condo_id"
+    t.integer  "floor"
+    t.string   "apartment"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

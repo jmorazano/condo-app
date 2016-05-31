@@ -15,7 +15,11 @@
     <%= f.label :eventdate %><br>
     <%= f.date_select :eventdate, :start_year=>Time.now.year, :end_year=>Time.now.year, :order=>[:day, :month, :year] %>
   </div>
-
+  
+  <div class="field">
+    <%= select_tag(:timeOfDay, options_for_select([['Dia', 1], ['Noche', 2]])) %>
+  </div>
+  
   <div class="field">
     <%= f.hidden_field :space_id, :value => @space_id %>
   </div>
@@ -23,6 +27,12 @@
   <% if params[:action] == "edit" %>
   <%= f.collection_select(:space_id, current_user.spaces, :id, :name) %>
   <% end %>
+
+  <p id="date_1">1 de Mayo al medio dia</p>
+  <p id="date_2">2 de Mayo al medio dia</p>
+  <p id="date_3">3 de Junio al medio dia</p>
+  <p id="date_4">4 de Septiembre a la tarde</p>
+
 
   <h1 id="changeDate" style="cursor:pointer"><%= @space_id %> </h1>
   <div class="actions">
